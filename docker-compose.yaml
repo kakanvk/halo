@@ -13,9 +13,9 @@ services:
     volumes:
       - ./:/root/.halo2
     ports:
-      - "8090:8090"
+      - "8080:8090"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health/readiness"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health/readiness"]
       interval: 30s
       timeout: 5s
       retries: 5
@@ -27,11 +27,11 @@ services:
       - --spring.r2dbc.password=o#DwN&JSa56
       - --spring.sql.init.platform=mysql
       # 外部访问地址，请根据实际需要修改
-      - --halo.external-url=http://localhost:8090/
+      - --halo.external-url=http://localhost:8080/
       # 初始化的超级管理员用户名
       - --halo.security.initializer.superadminusername=admin
       # 初始化的超级管理员密码
-      - --halo.security.initializer.superadminpassword=P@88w0rd
+      - --halo.security.initializer.superadminpassword=admin@
 
   halodb:
     image: mysql:8.0.31
